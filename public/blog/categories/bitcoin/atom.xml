@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bitcoin | E(X)PECTED P(A)YOFF]]></title>
   <link href="http://expectedpayoff.com/blog/categories/bitcoin/atom.xml" rel="self"/>
   <link href="http://expectedpayoff.com/"/>
-  <updated>2014-04-01T05:59:02-07:00</updated>
+  <updated>2014-04-04T21:42:31-07:00</updated>
   <id>http://expectedpayoff.com/</id>
   <author>
     <name><![CDATA[Byron Gibson]]></name>
@@ -217,9 +217,9 @@ share price that reflects people&rsquo;s lack of confidence in &ldquo;virtual&rd
     <link href="http://expectedpayoff.com/blog/2013/03/22/bitcoin-and-the-byzantine-generals-problem/"/>
     <updated>2013-03-22T12:52:00-07:00</updated>
     <id>http://expectedpayoff.com/blog/2013/03/22/bitcoin-and-the-byzantine-generals-problem</id>
-    <content type="html"><![CDATA[<p>Whenever I need to explain what is so special about Bitcoin to someone unfamiliar with it, I explain it in terms of accounting ledgers and the Byzantine Generals Problem.  This is that explanation, so I can just link it to folks instead of having to rewrite it every time.</p>
+    <content type="html"><![CDATA[<p>For those still wrapping their heads around Bitcoin, hopefully this can help.  In a nutshell, try thinking of it not as money but in terms of accounting ledgers and the Byzantine Generals Problem.</p>
 
-<p>First, don&rsquo;t think of bitcoin as a currency, but rather as a ledger.  It is an electronic ledger, of which a copy is kept on every participant&rsquo;s computer in the network, and all of which are continually updated, reconciled, and synchronized in real-time.  Every participant can make entries in this ledger, which records transactions of a certain amount of currency from one participant to another participant, and every one of those entries is then propagated to the network in realtime, so that every copy on every computer is updated near simultaneously and all copies of the ledger are kept synchronized.  The official term for this public, distributed ledger is the <a href="https://en.bitcoin.it/wiki/Blockchain">&lsquo;blockchain&rsquo;</a> (which <a href="http://blockchain.info/">you can see here</a>), and it uses <a href="https://en.wikipedia.org/wiki/BitTorrent">Bittorrent</a> technology to keep all copies synchronized.</p>
+<p>Bitcoin is an electronic ledger, a copy of which is kept on every participant&rsquo;s computer in the network, and all of which are continually updated, reconciled, and synchronized in real-time.  Every participant can make entries in this ledger, which records transactions of a certain amount of currency from one participant to another participant, and every one of those entries is then propagated to the network in realtime, so that every copy on every computer is updated near simultaneously and all copies of the ledger are kept synchronized.  The official term for this public, distributed ledger is the <a href="https://en.bitcoin.it/wiki/Blockchain">&lsquo;blockchain&rsquo;</a> (which <a href="http://blockchain.info/">you can see here</a>), and it uses <a href="https://en.wikipedia.org/wiki/BitTorrent">Bittorrent</a> technology to keep all copies synchronized.</p>
 
 <p>You can also think of Bitcoin not as a currency but as a general solution to a <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">difficult algorithmic problem</a> in the field of distributed systems, colloquially known as <a href="https://en.wikipedia.org/wiki/Byzantine_fault_tolerance">Byzantine Fault Tolerance</a>, the <a href="http://en.wikipedia.org/wiki/Byzantine_Generals%27_Problem">Byzantine Generals Problem</a>, or the <a href="https://en.wikipedia.org/wiki/Two_Generals%27_Problem">Two Generals Problem</a>.</p>
 
@@ -268,7 +268,7 @@ d70298566aa2f1a66d892dc31fedce6147b5bf509e28d29627078d9a01a8f86b
 <ol>
 <li><p>The creation of the Internet.</p></li>
 <li><p>The invention of public key cryptography.</p></li>
-<li><p>The invention of the <a href="https://en.wikipedia.org/wiki/Peer_to_peer">P2P</a> <a href="https://en.wikipedia.org/wiki/BitTorrent">Bitorrent Protocol</a>.  Bittorrent was originally developed for sharing many files between relatively small subsets of the users on the network, but Bitcoin repurposes it to share a single file amongst <em>all</em> users.</p></li>
+<li><p>The invention of the <a href="https://en.wikipedia.org/wiki/Peer_to_peer">P2P</a> <a href="https://en.wikipedia.org/wiki/BitTorrent">Bitorrent Protocol</a>.  Bittorrent was originally developed for sharing many static files between relatively small subsets of the users on the network, but Bitcoin repurposes it to share a single continuously-updating file amongst <em>all</em> users.</p></li>
 <li><p>The realization that adding a simple time delay into the system along with public key cryptography to verify individual transactions could solve the problem.</p></li>
 </ol>
 

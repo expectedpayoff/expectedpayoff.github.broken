@@ -8,9 +8,9 @@ published: true
 author: Byron Gibson
 ---
 
-Whenever I need to explain what is so special about Bitcoin to someone unfamiliar with it, I explain it in terms of accounting ledgers and the Byzantine Generals Problem.  This is that explanation, so I can just link it to folks instead of having to rewrite it every time.
-
-First, don't think of bitcoin as a currency, but rather as a ledger.  It is an electronic ledger, of which a copy is kept on every participant's computer in the network, and all of which are continually updated, reconciled, and synchronized in real-time.  Every participant can make entries in this ledger, which records transactions of a certain amount of currency from one participant to another participant, and every one of those entries is then propagated to the network in realtime, so that every copy on every computer is updated near simultaneously and all copies of the ledger are kept synchronized.  The official term for this public, distributed ledger is the ['blockchain'][1] (which [you can see here][2]), and it uses [Bittorrent][11] technology to keep all copies synchronized.
+For those still wrapping their heads around Bitcoin, hopefully this can help.  In a nutshell, try thinking of it not as money but in terms of accounting ledgers and the Byzantine Generals Problem. 
+ 
+Bitcoin is an electronic ledger, a copy of which is kept on every participant's computer in the network, and all of which are continually updated, reconciled, and synchronized in real-time.  Every participant can make entries in this ledger, which records transactions of a certain amount of currency from one participant to another participant, and every one of those entries is then propagated to the network in realtime, so that every copy on every computer is updated near simultaneously and all copies of the ledger are kept synchronized.  The official term for this public, distributed ledger is the ['blockchain'][1] (which [you can see here][2]), and it uses [Bittorrent][11] technology to keep all copies synchronized.
 
 You can also think of Bitcoin not as a currency but as a general solution to a [difficult algorithmic problem][6] in the field of distributed systems, colloquially known as [Byzantine Fault Tolerance][3], the [Byzantine Generals Problem][4], or the [Two Generals Problem][5].
 
@@ -56,7 +56,7 @@ So the crux of why Bitcoin is special:  It represents a solution to a difficult 
 
 2.  The invention of public key cryptography.
 
-3.  The invention of the [P2P][10] [Bitorrent Protocol][11].  Bittorrent was originally developed for sharing many files between relatively small subsets of the users on the network, but Bitcoin repurposes it to share a single file amongst *all* users.  
+3.  The invention of the [P2P][10] [Bitorrent Protocol][11].  Bittorrent was originally developed for sharing many static files between relatively small subsets of the users on the network, but Bitcoin repurposes it to share a single continuously-updating file amongst *all* users.  
 
 4.  The realization that adding a simple time delay into the system along with public key cryptography to verify individual transactions could solve the problem.  
 
