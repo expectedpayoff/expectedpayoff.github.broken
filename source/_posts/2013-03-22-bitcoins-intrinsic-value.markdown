@@ -8,7 +8,7 @@ published: true
 author: Byron Gibson
 ---
 
-Yesterday I watched a [Bloomberg News segment][1] on Bitcoin, which raised a 
+Yesterday [Bloomberg did a news segment on Bitcoin][1], which raised a 
 number of questions about the cryptocurrency.  All of these have been answered
 before but the journalists apparently weren't aware of that (except perhaps the host, 
 Sara Eisen, who seems to have done her homework).  
