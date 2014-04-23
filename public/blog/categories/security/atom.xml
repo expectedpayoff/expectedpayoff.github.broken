@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: security | E(X)PECTED P(A)YOFF]]></title>
+  <link href="http://expectedpayoff.com/blog/categories/security/atom.xml" rel="self"/>
+  <link href="http://expectedpayoff.com/"/>
+  <updated>2014-04-22T17:54:15-07:00</updated>
+  <id>http://expectedpayoff.com/</id>
+  <author>
+    <name><![CDATA[Byron Gibson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to checksum and install source tarballs in Docker]]></title>
+    <link href="http://expectedpayoff.com/blog/2014/04/22/how-to-checksum-and-install-source-tarballs-in-docker/"/>
+    <updated>2014-04-22T16:52:00-07:00</updated>
+    <id>http://expectedpayoff.com/blog/2014/04/22/how-to-checksum-and-install-source-tarballs-in-docker</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;re writing a Dockefile that downloads, builds, and installs a source package, say
+node.js, nginx, haskell, whatever, you&rsquo;ll most likely want your Dockerfile to checksum that
+package and exit on fail.</p>
+
+<p>Docker doesn&rsquo;t have a built-in way to do this, and it <a href="https://github.com/dotcloud/docker/issues/2579">doesn&rsquo;t appear as if it is going
+to get one any time soon</a>, so here&rsquo;s how to script it manually:</p>
+
+<p>````</p>
+
+<h1>Docker official ubuntu 12.04 LTS</h1>
+
+<p>FROM ubuntu:12.04</p>
+
+<h1>SETUP</h1>
+
+<p>RUN cd /tmp
+RUN apt-get update -y
+RUN apt-get install wget build-essential automake -y
+RUN wget <a href="http://nodejs.org/dist/latest/node-v0.10.26.tar.gz">http://nodejs.org/dist/latest/node-v0.10.26.tar.gz</a>
+RUN wget <a href="http://nodejs.org/dist/latest/SHASUMS256.txt">http://nodejs.org/dist/latest/SHASUMS256.txt</a></p>
+
+<h1>CHECKSUM</h1>
+
+<h1>RUN checksum: continue on success, exit Docker build on fail.  Requires some</h1>
+
+<h1>script-fu to reduce output down to a single 0 or non-zero POSIX exit code.</h1>
+
+<h1>Details in footnote <a href="https://github.com/dotcloud/docker/issues/2579">1</a>.  TLDR: run checksum, merge sderr into sdout (2>$1) before</h1>
+
+<h1>piping stout to grep, grep for checksum success code OK, suppress all output except</h1>
+
+<h1>exit codes with -qs flags on grep.  Returns 0 exit code if checksum succeeds, 1 if</h1>
+
+<h1>not.  Docker breaks and exits on non-zero exit code.</h1>
+
+<p>RUN sha256sum -c SHASUM256.txt 2>&amp;1|grep -qs OK</p>
+
+<h1>INSTALL</h1>
+
+<p>RUN tar -xvf node-v0.10.26.tar.gz &amp;&amp; cd node-v0.10.26
+RUN ./configure &amp;&amp; make &amp;&amp; make install</p>
+
+<h1>CLEANUP</h1>
+
+<p>RUN apt-get purge wget build-essential automake -y &amp;&amp; apt-get autoremove -y
+````</p>
+
+<p>Docker automatically exits Dockerfile build if any RUN command returns a non-zero
+(error) exit code.</p>
+
+<p>The problem here is that node.js&rsquo;s SHASUMS256.txt contains many lines
+for lots of different files &ndash; source, binaries for different platforms, etc. &ndash; only
+one of which will succeed at this checksum and return 0 exit code.  All other lines
+will fail and be sent to sderr.  sterr is not included by default in pipes, only sdout,
+causing this command to return a jumble error data prior to the pipe.  Docker then
+interprets this as non-zero error codes and exits, even if the checksum succeeds.</p>
+
+<p>The solution is to manually merge sderr into stout, then pipe to grep, grep for the OK
+(case sensitive), and suppress all output except exit codes with -qs.  If OK is
+is present in the combined output, this line will return a 0 exit code.  If not,
+will return 1 and the Dockerfile build will break and exit.</p>
+
+<p>You can test this process manually by running a Docker container in interactive mode:</p>
+
+<p>````</p>
+
+<blockquote><p>sudo docker run -i -t ubuntu:12.04 bin/bash
+````</p></blockquote>
+
+<p>Run the SETUP and CHECKSUM parts, then then check the CHECKSUM&rsquo;s exit code with <code>echo $?</code>.</p>
+]]></content>
+  </entry>
+  
+</feed>

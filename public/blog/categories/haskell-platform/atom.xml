@@ -4,7 +4,7 @@
   <title><![CDATA[Category: haskell platform | E(X)PECTED P(A)YOFF]]></title>
   <link href="http://expectedpayoff.com/blog/categories/haskell-platform/atom.xml" rel="self"/>
   <link href="http://expectedpayoff.com/"/>
-  <updated>2014-04-15T15:25:02-07:00</updated>
+  <updated>2014-04-22T17:54:15-07:00</updated>
   <id>http://expectedpayoff.com/</id>
   <author>
     <name><![CDATA[Byron Gibson]]></name>
@@ -52,47 +52,22 @@ should be clear how it works upon closer inspection of those scripts.</p>
 
 <p>The <code>update-alternatives</code> commands take the form:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Install </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>update-alternatives &mdash;install [destination] [identifier] [source] [priority] \
-</span><span class='line'> &mdash;slave [destination] [identifier] [source] \
-</span><span class='line'> &hellip;
-</span><span class='line'> &mdash;slave [destination] [identifier] [source]</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock Install %}
+update-alternatives &mdash;install [destination] [identifier] [source] [priority] \
+ &mdash;slave [destination] [identifier] [source] \
+ &hellip;
+ &mdash;slave [destination] [identifier] [source]
+{% endcodeblock %}</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Change active package </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>update-alternatives &mdash;config [identifier]</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock Change active package %}
+update-alternatives &mdash;config [identifier]
+{% endcodeblock %}</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Remove all </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>update-alternatives &mdash;remove [identifier]</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock Remove all %}
+update-alternatives &mdash;remove [identifier]
+{% endcodeblock %}</p>
 
-<p><div><script src='https://gist.github.com/2898928.js'></script>
-<noscript><pre><code>#!/usr/bin/env bash -
-
-# install haskell GHC to the system via Debian update-alternatives
-
-BIN=&quot;/usr/bin&quot;
-MAN=&quot;/usr/share/man&quot;
-GHC=&quot;/opt/haskell/ghc/7.4.1&quot;
-GHC_BIN=&quot;$GHC/bin&quot;
-GHC_MAN=&quot;$GHC/share/man&quot;
-PRIORITY_LEVEL=1200
-
-update-alternatives --install $BIN/ghc ghc $GHC_BIN/ghc $PRIORITY_LEVEL \
- --slave $BIN/ghci ghci $GHC_BIN/ghci \
- --slave $BIN/ghc-pkg ghc-pkg $GHC_BIN/ghc-pkg \
- --slave $BIN/haddock haddock $GHC_BIN/haddock \
- --slave $BIN/hp2ps hp2ps $GHC_BIN/hp2ps \
- --slave $BIN/hpc hpc $GHC_BIN/hpc \
- --slave $BIN/hsc2hs hsc2hs $GHC_BIN/hsc2hs \
- --slave $BIN/runghc runghc $GHC_BIN/runghc \
- --slave $BIN/runhaskell runhaskell $GHC_BIN/runhaskell \
- --slave $MAN/man9 man.ghc $GHC_MAN/man1</code></pre></noscript></div>
-</p>
+<p>{% gist 2898928 %}</p>
 
 <p>Read on for why&hellip;</p>
 

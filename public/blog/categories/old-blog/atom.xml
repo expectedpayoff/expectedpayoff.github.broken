@@ -4,7 +4,7 @@
   <title><![CDATA[Category: old blog | E(X)PECTED P(A)YOFF]]></title>
   <link href="http://expectedpayoff.com/blog/categories/old-blog/atom.xml" rel="self"/>
   <link href="http://expectedpayoff.com/"/>
-  <updated>2014-04-15T15:25:02-07:00</updated>
+  <updated>2014-04-22T17:54:15-07:00</updated>
   <id>http://expectedpayoff.com/</id>
   <author>
     <name><![CDATA[Byron Gibson]]></name>
@@ -24,11 +24,14 @@
 <li><p>Start DrRacket</p></li>
 <li><p>Change the language to Module. In the Language menu at the top (or the bottom left):</p>
 
-<p> <blockquote><p>Language &ndash;&gt; Choose Language &ndash;&gt; Module &ndash;&gt; OK</p></blockquote></p></li>
+<p> {% blockquote %}
+ Language &ndash;&gt; Choose Language &ndash;&gt; Module &ndash;&gt; OK
+ {% endblockquote %}</p></li>
 <li><p>DrRacket lacks the primitive <code>atom?</code> used extensively in The Little Schemer, so you have to define it yourself.  atom? simply returns true if the input is an atom, false if not. In the top window, the Definitions window, add:</p>
 
-<p> <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>(define atom? (lambda (a)  (not (list? a))))</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p> {% codeblock %}
+ (define atom? (lambda (a)  (not (list? a))))
+ {% endcodeblock %}</p></li>
 </ol>
 
 
